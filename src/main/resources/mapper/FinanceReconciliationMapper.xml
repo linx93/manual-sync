@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuochexia.manualsync.mapper.FinanceReconciliationMapper">
+    <insert id="insertFinanceDownPaymentRecord">
+        INSERT INTO finance_down_payment_record
+            (sid, amount, pay_channel, pay_time, pay_rule, remark, created_at, creator, creator_name, updated_at, updater, deleted_at, tenant_id, cancel_remark, cancel_time, cancel_name, cancel_id)
+                VALUES
+            (#{po.sid}, #{po.downPaymentPaid}, '手动同步的数据',UNIX_TIMESTAMP(), '', '手动同步的数据', now(), 0, '手动同步', now(), null, null, #{po.tenantId}, '', null, '', null)
+    </insert>
+
+    <update id="syncPayDownData">
+
+    </update>
+    <update id="updateById" parameterType="com.tuochexia.manualsync.entity.po.FinanceReconciliationPO">
+        UPDATE finance_reconciliation
+        <set>
+            <if test="po.downPaymentPayable != null and po.downPaymentPayable != 0">
+                down_payment_payable = #{po.downPaymentPayable},
+            </if>
+            <if test="po.downPaymentPaid != null and po.downPaymentPaid !=0">
+                down_payment_paid = #{po.downPaymentPaid},
+            </if>
+        </set>
+        WHERE id = #{po.id}
+    </update>
+    <select id="selectOneById" parameterType="long" resultType="com.tuochexia.manualsync.entity.po.FinanceReconciliationPO">
+        SELECT * FROM finance_reconciliation WHERE id = #{id}
+    </select>
+    <select id="selectByEntity" resultType="com.tuochexia.manualsync.entity.po.FinanceReconciliationPO">
+        SELECT * FROM finance_reconciliation
+        <where>
+            <if test="po.id!=0 and po.id != null">
+                and id = #{po.id}
+            </if>
+
+            <if test="po.outNo!='' and po.outNo != null">
+                and out_no = #{po.outNo}
+            </if>
+
+            <if test="po.license !='' and po.license != null">
+                and license = #{po.license}
+            </if>
+        </where>
+
+    </select>
+
+</mapper>

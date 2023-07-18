@@ -1,0 +1,41 @@
+server:
+  port: 9192
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_SERVER:192.168.2.166:3306}/tcx_finance_a1?allowMultiQueries=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:123456}
+    hikari:
+      maximum-pool-size: 60 #连接池最大连接数，默认是10
+      minimum-idle: 10      #最小空闲连接数
+      max-lifetime: 1800000 #此属性控制池中连接的最长生命周期，0代表无限生命周期，默认1800000即是30分钟
+
+
+mybatis:
+  mapper-locations: classpath*:/mapper/**/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+sync:
+  data-source:
+    pay-down: C:\Users\linx\Desktop\发山哥联盟流水.xlsx         #向下付款的execl路径
+
+#日志相关配置
+logging:
+  level:
+    com.shenlan.privacy: info
+  file:
+    #总日志文件，生成位置当前目录下的logs里面
+    name: ./logs/manual-sync.log
+  logback:
+    rollingpolicy:
+      #服务重启清除历史日志，默认false
+      clean-history-on-start: false
+      #文件名，滚动生成，生成位置当前目录下的logs里面
+      file-name-pattern: ./logs/manual-sync.%d{yyyy-MM-dd}.%i.log
+      #默认是7天，保存近30天
+      max-history: 30
+      #滚动日志每个文件大小

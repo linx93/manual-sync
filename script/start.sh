@@ -1,0 +1,1 @@
+java -jar manual-sync-0.0.1.jar --spring.datasource.url=jdbc:mysql://47.100.162.114:13306/shenlan_1?allowMultiQueries=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true --spring.datasource.username=root --spring.datasource.password=root --sync.dataSource.payDown=C:\Users\linx\Desktop\发山哥联盟流水.xlsx
