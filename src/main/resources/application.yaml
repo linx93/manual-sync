@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_SERVER:192.168.2.166:3306}/tcx_finance_a1?allowMultiQueries=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${MYSQL_SERVER:192.168.2.102:13306}/tcx_finance_a?allowMultiQueries=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:123456}
+    password: ${MYSQL_PASSWORD:shenlan_20220528}
     hikari:
       maximum-pool-size: 60 #连接池最大连接数，默认是10
       minimum-idle: 10      #最小空闲连接数

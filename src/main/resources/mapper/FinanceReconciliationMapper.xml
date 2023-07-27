@@ -5,7 +5,7 @@
         INSERT INTO finance_down_payment_record
             (sid, amount, pay_channel, pay_time, pay_rule, remark, created_at, creator, creator_name, updated_at, updater, deleted_at, tenant_id, cancel_remark, cancel_time, cancel_name, cancel_id)
                 VALUES
-            (#{po.sid}, #{po.downPaymentPaid}, '手动同步的数据',UNIX_TIMESTAMP(), '', '手动同步的数据', now(), 0, '手动同步', now(), null, null, #{po.tenantId}, '', null, '', null)
+            (#{po.sid}, #{po.downPaymentPaid}, '手动同步的数据',UNIX_TIMESTAMP(), '', '手动同步的数据', now(), 0, '手动同步', now(), null, null, 13, '', null, '', null)
     </insert>
 
     <update id="syncPayDownData">

@@ -8,6 +8,7 @@ import com.alibaba.excel.read.listener.ReadListener;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.util.ListUtils;
 import com.alibaba.excel.write.metadata.WriteSheet;
+import com.alibaba.fastjson2.JSON;
 import com.tuochexia.manualsync.entity.bo.PayDownExeclBO;
 import com.tuochexia.manualsync.entity.execl.PayDownExecl;
 import com.tuochexia.manualsync.entity.po.FinanceReconciliationPO;
@@ -166,7 +167,7 @@ public class PayDownImpl implements IPayDown {
         @Override
         public void invoke(PayDownExecl data, AnalysisContext context) {
             rows += 1;
-            // log.info("解析到一条数据:{}", JSON.toJSONString(data));
+            log.info("解析到一条数据:{}", JSON.toJSONString(data));
 //            Map<Integer, Cell> cellMap = context.readRowHolder().getCellMap();
 //            log.info("解析到一条数据cellMap:{}", JSON.toJSONString(cellMap));
 //            cellMap.forEach((k,v) -> {
